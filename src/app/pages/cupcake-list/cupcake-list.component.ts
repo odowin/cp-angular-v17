@@ -6,11 +6,12 @@ import { ApiService } from '../../shared/api.service';
 import { Cupcake } from '../../shared/cupcake.model';
 import { CommonModule } from '@angular/common';
 import { Accessory } from '../../shared/accessory.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cupcake-list',
   standalone: true,
-  imports: [CupcakeComponent, CommonModule],
+  imports: [CupcakeComponent, CommonModule, FormsModule],
   templateUrl: './cupcake-list.component.html',
   styleUrl: './cupcake-list.component.css',
 })
@@ -19,6 +20,10 @@ export class CupcakeListComponent {
   cupcakes: Cupcake[] = []; // Liste des cupcakes
   
   accessories: Accessory[] = []; // Liste des accessoires
+  // selectedAccessory: string = ''; // Attribut pour stocker l'accessoire sélectionné
+
+  filteredCupcakes: Cupcake[] = [];  // Liste filtrée de cupcakes
+  selectedAccessoryId: string = '';  // ID de l'accessoire sélectionné
 
   constructor(private apiService: ApiService) {}
 
@@ -34,6 +39,15 @@ export class CupcakeListComponent {
       this.accessories = data;
       console.log('Accessories:', this.accessories);
     });
+  }
+ 
+  // Méthode pour filtrer les cupcakes en fonction de l'accessoire sélectionné
+  filterCupcakes(): void {
+    if (this.selectedAccessoryId === '') {
+      this.filteredCupcakes = this.cupcakes;  // Si aucun filtre n'est sélectionné, afficher tous les cupcakes
+    } else {
+      this.filteredCupcakes = this.cupcakes.filter(cupcake => cupcake.accessory_id === this.selectedAccessoryId);
+    }
   }
 }
 

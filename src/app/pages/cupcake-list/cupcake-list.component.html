@@ -1,12 +1,15 @@
 <h1>My cupcakes</h1>
 <form class="center">
   <label htmlFor="cupcake-select">
-    Filter by
+    Select a accessory:
     <select
       id="cupcake-select"
       name="cupcake-select"
+      [(ngModel)]="selectedAccessoryId"
+      (change)="filterCupcakes()"
     >
-      <option value="">---</option>
+    <option value="" disabled selected>--- Select an accessory ---</option>
+      <option value="">All</option>
       <!-- * Step 4: add an option for each accessory * -->
       <option *ngFor="let accessory of accessories" [value]="accessory.id">
         {{ accessory.name }}
@@ -14,26 +17,42 @@
     </select>
   </label>
 </form>
+
 <ul class="cupcake-list" id="cupcake-list">
   <!-- * Step 2: repeat this block for each cupcake * -->
-  <li class="cupcake-item" *ngFor="let cupcake of cupcakes">
+  <li class="cupcake-item" *ngFor="let cupcake of filteredCupcakes">
     <app-cupcake [cupcake]="cupcake"></app-cupcake>
   </li>
 </ul>
 
+<!-- Afficher la liste de cupcakes filtrés s'ils existent -->
+<!-- <ul class="cupcake-list" id="cupcake-list" *ngIf="filteredCupcakes.length > 0">
+  <li class="cupcake-item" *ngFor="let cupcake of filteredCupcakes">
+    <app-cupcake [cupcake]="cupcake"></app-cupcake>
+  </li>
+</ul> -->
 
-<h1>Accessories</h1>
-<table class="accessory-table">
-  <thead>
-    <tr>
-      <!-- <th>Image</th>
-      <th>Name</th> -->
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let accessory of accessories">
-      <td><img [src]="accessory.url" [alt]="accessory.name" width="50" height="50" /></td>
-      <td>{{ accessory.name }}</td>
-    </tr>
-  </tbody>
-</table>
+<!-- Si filteredCupcakes est vide, afficher la liste complète des cupcakes -->
+<!-- <ul class="cupcake-list" id="cupcake-list" *ngIf="filteredCupcakes.length === 0">
+  <li class="cupcake-item" *ngFor="let cupcake of cupcakes">
+    <app-cupcake [cupcake]="cupcake"></app-cupcake>
+  </li>
+</ul> -->
+
+<div *ngIf="filteredCupcakes.length === 0">
+  <h1>Accessories</h1>
+  <table class="accessory-table">
+    <thead>
+      <tr>
+        <!-- <th>Image</th>
+        <th>Name</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let accessory of accessories">
+        <td><img [src]="accessory.url" [alt]="accessory.name" width="50" height="50" /></td>
+        <td>{{ accessory.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
