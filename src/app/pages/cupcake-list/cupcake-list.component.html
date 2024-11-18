@@ -22,10 +22,18 @@
 </ul>
 
 
-<!-- <h1>Accessories</h1>
-<ul class="accessory-list">
-  <li *ngFor="let accessory of accessories" class="accessory-item">
-    <img [src]="accessory.url" [alt]="accessory.name" />
-    <p>{{ accessory.name }}</p>
-  </li>
-</ul> -->
+<h1>Accessories</h1>
+<table class="accessory-table">
+  <thead>
+    <tr>
+      <!-- <th>Image</th>
+      <th>Name</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let accessory of accessories">
+      <td><img [src]="accessory.url" [alt]="accessory.name" width="50" height="50" /></td>
+      <td>{{ accessory.name }}</td>
+    </tr>
+  </tbody>
+</table>
