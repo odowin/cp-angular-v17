@@ -12,11 +12,12 @@
           This cupcake was not just baked, it was <strong>crafted</strong> in the magical kitchens of the legendary <i style="color: #de467c;">Wild</i>, where coding and pastry skills merge into a perfect blend of sweetness and sass.
         </p>
         <p>
-          Made with <span [style.color]="cupcake?.color1">magic cherries</span>, <span [style.color]="cupcake?.color2">cloud fluff frosting</span>, and a sprinkle of <span [style.color]="cupcake?.color3">stardust glitter</span>, it's said to give you the power to code in your sleep. 🍰💻
+          Made with <span [style.color]="cupcake?.color1">magic {{ accessory?.name  | lowercase }}</span>, <span [style.color]="cupcake?.color2">cloud fluff frosting</span>, and a sprinkle of <span [style.color]="cupcake?.color3">stardust glitter</span>, it's said to give you the power to code in your sleep. 🍰💻
         </p>
         <p>
           Warning: Eating this cupcake may lead to spontaneous dance breaks and a sudden urge to join a wild tech meetup. Don’t say we didn’t warn you! 😉
         </p>
+        
     </div>
 </div>
   
