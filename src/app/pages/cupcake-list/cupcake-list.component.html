@@ -8,6 +8,9 @@
     >
       <option value="">---</option>
       <!-- * Step 4: add an option for each accessory * -->
+      <option *ngFor="let accessory of accessories" [value]="accessory.id">
+        {{ accessory.name }}
+      </option>
     </select>
   </label>
 </form>
@@ -17,3 +20,12 @@
     <app-cupcake [cupcake]="cupcake"></app-cupcake>
   </li>
 </ul>
+
+
+<!-- <h1>Accessories</h1>
+<ul class="accessory-list">
+  <li *ngFor="let accessory of accessories" class="accessory-item">
+    <img [src]="accessory.url" [alt]="accessory.name" />
+    <p>{{ accessory.name }}</p>
+  </li>
+</ul> -->

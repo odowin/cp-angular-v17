@@ -5,6 +5,7 @@ import { OnInit } from '@angular/core';
 import { ApiService } from '../../shared/api.service';
 import { Cupcake } from '../../shared/cupcake.model';
 import { CommonModule } from '@angular/common';
+import { Accessory } from '../../shared/accessory.model';
 
 @Component({
   selector: 'app-cupcake-list',
@@ -15,7 +16,9 @@ import { CommonModule } from '@angular/common';
 })
 export class CupcakeListComponent {
   // Step 1: get all cupcakes
-  cupcakes: Cupcake[] = []; // Stocke les données des cupcakes
+  cupcakes: Cupcake[] = []; // Liste des cupcakes
+  
+  accessories: Accessory[] = []; // Liste des accessoires
 
   constructor(private apiService: ApiService) {}
 
@@ -23,11 +26,15 @@ export class CupcakeListComponent {
     // Récupération des données depuis l'API
     this.apiService.getCupcakes().subscribe((data) => {
       this.cupcakes = data;
-      console.log(data);
+      console.log('Cupcakes:', this.cupcakes);
+    });
+
+    // Step 3: get all accessories
+    this.apiService.getAccessories().subscribe((data) => {
+      this.accessories = data;
+      console.log('Accessories:', this.accessories);
     });
   }
-  // Step 3: get all accessories
-
 }
 
 // console.log(data); :
@@ -276,4 +283,30 @@ export class CupcakeListComponent {
 //       "name": "Sweden"
 //   }
 // ]
-
+// [
+//   {
+//       "id": "1",
+//       "name": "Cherry",
+//       "url": "http://images.innoveduc.fr/php_parcours/cp2/cherry.png"
+//   },
+//   {
+//       "id": "2",
+//       "name": "Donut",
+//       "url": "http://images.innoveduc.fr/php_parcours/cp2/donut.png"
+//   },
+//   {
+//       "id": "3",
+//       "name": "Chocolate",
+//       "url": "http://images.innoveduc.fr/php_parcours/cp2/chocolate.png"
+//   },
+//   {
+//       "id": "4",
+//       "name": "Wild",
+//       "url": "http://images.innoveduc.fr/php_parcours/cp2/wcs.png"
+//   },
+//   {
+//       "id": "5",
+//       "name": "Christmas Candy",
+//       "url": "http://images.innoveduc.fr/php_parcours/cp2/christmas-candy.png"
+//   }
+// ]
