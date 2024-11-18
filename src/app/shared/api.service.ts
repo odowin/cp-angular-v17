@@ -19,5 +19,8 @@ export class ApiService {
 
   getAccessories(): Observable<Accessory[]> {
     return this.http.get<Accessory[]>(this.accessoriesUrl);
-  }  
+  }
+  getCupcakeById(id: string): Observable<Cupcake> {
+    return this.http.get<Cupcake>(`http://localhost:4000/cupcakes/${id}`);
+  }
 }

@@ -7,11 +7,12 @@ import { Cupcake } from '../../shared/cupcake.model';
 import { CommonModule } from '@angular/common';
 import { Accessory } from '../../shared/accessory.model';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cupcake-list',
   standalone: true,
-  imports: [CupcakeComponent, CommonModule, FormsModule],
+  imports: [CupcakeComponent, CommonModule, FormsModule, RouterModule],
   templateUrl: './cupcake-list.component.html',
   styleUrl: './cupcake-list.component.css',
 })

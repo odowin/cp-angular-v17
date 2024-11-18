@@ -1,0 +1,27 @@
+.cupcake-text {
+    text-align: center;
+    text-transform: capitalize;
+    transform: rotate(-2deg);
+}
+
+.cupcake-part {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.details-container {
+    display: flex;
+    align-items: flex-start; /* Pour aligner les éléments au sommet */
+    justify-content: space-between; /* Espacement entre les éléments */
+    gap: 20px; /* Espacement entre les deux éléments */
+}
+
+/* Description de cupcake */
+.cupcake-description {
+    flex: 1; /* Prend tout l'espace restant */
+    text-align: justify; /* Justifier le texte */
+}
+
+.cupcake-description span {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
