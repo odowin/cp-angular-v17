@@ -4,11 +4,12 @@ import { CupcakeComponent } from '../../components/cupcake/cupcake.component';
 import { OnInit } from '@angular/core';
 import { ApiService } from '../../shared/api.service';
 import { Cupcake } from '../../shared/cupcake.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cupcake-list',
   standalone: true,
-  imports: [CupcakeComponent],
+  imports: [CupcakeComponent, CommonModule],
   templateUrl: './cupcake-list.component.html',
   styleUrl: './cupcake-list.component.css',
 })
